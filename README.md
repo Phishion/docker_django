@@ -1,9 +1,9 @@
-[版本]
+# 版本
 
 v0.1
 
 
-[产品说明]
+# 产品说明
 
 在任意安装了 docker 和 docker compose 的机器，只要在与
 docker-compose.yml 同级的目录下运行 docker-compose up -d
@@ -15,7 +15,7 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
 
 
 
-[实现目标]
+# 实现目标
 
 - 保证开发环境和生产环境高度统一
 - 配置文件全挂载，方便实时修改
@@ -24,39 +24,39 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
 
 
 
-[使用说明]
+# 使用说明
 
---config\       # 配置文件目录，可以实时修改，修改完成后，重启容器即可生效
+- --config\       # 配置文件目录，可以实时修改，修改完成后，重启容器即可生效
 
---database\     # 数据库文件夹，已经预先初始化一个叫 psndb 的数据库
+- --database\     # 数据库文件夹，已经预先初始化一个叫 psndb 的数据库
 
---docker-compose.yml    # docker-compose 文件，用来描述容器的启动，容器和宿主机文件的挂载，以及容器相关配置
+- --docker-compose.yml    # docker-compose 文件，用来描述容器的启动，容器和宿主机文件的挂载，以及容器相关配置
 
---source\       # django 代码的位置
+- --source\       # django 代码的位置
 
 将 database 与 source 解压，然后在安装了 docker 和 docker compose 的机器输入 docker-compose up -d 即可。
 
 
 
-[软件版本]
+# 软件版本
 
-django:2.0.4
+- django:2.0.4
 
-centos:7.4(django 镜像中)
+- centos:7.4(django 镜像中)
 
-python3.6.4(django 镜像中)
+- python3.6.4(django 镜像中)
 
-nginx:1.13.12
+- nginx:1.13.12
 
-postgres:10.3
+- postgres:10.3
 
-docker-compose version 1.21.0
+- docker-compose version 1.21.0
 
-docker Version:18.03.0-ce
+- docker Version:18.03.0-ce
 
 
 
-[重要提示]
+## 重要提示
 
 - 你需要在 docker-compose.yml 修改数据库密码，以及 django 的 settings.py 配合修改。
 - django 后台 admin 用户的初始化密码 password123，切记需要修改
