@@ -1,9 +1,9 @@
-# 版本
+# Django uWSGI nginx Postgres docker-compose 一键部署
 
-v0.1
+版本 v0.1
 
 
-# 产品说明
+## 产品说明
 
 在任意安装了 docker 和 docker compose 的机器，只要在与
 docker-compose.yml 同级的目录下运行 docker-compose up -d
@@ -15,7 +15,7 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
 
 
 
-# 实现目标
+## 实现目标
 
 - 保证开发环境和生产环境高度统一
 - 配置文件全挂载，方便实时修改
@@ -24,7 +24,7 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
 
 
 
-# 使用说明
+## 使用说明
 
 - --config\       # 配置文件目录，可以实时修改，修改完成后，重启容器即可生效
 
@@ -38,7 +38,7 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
 
 
 
-# 软件版本
+## 软件版本
 
 - django:2.0.4
 
@@ -56,11 +56,26 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
 
 
 
-## 重要提示
+### 重要提示
 
-- 你需要在 docker-compose.yml 修改数据库密码，以及 django 的 settings.py 配合修改。
+#### 如何修改数据库密码
+- 方法1：
+  删除 database 文件夹，然后编辑 docker-compose.yml，注释掉下面2行，填写自己需要的密码
+  `# - ./config/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf`
+  `# - ./config/postgres/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf`
+  POSTGRES_PASSWORD:newpass123456
+  运行后，把 django 的 settings.py 中的密码也一并修改，再把注释的内容恢复再运行一遍 docker-compose up -d 即可
+
+- 方法2：
+  进入 postgres 容器，然后手动修改密码
+  `alter user postgres with password 'newpass123456';`
+  再同步修改掉 docker-compose.yml 以及 django 的 settings.py 中的密码
+
+#### django 后台密码
 - django 后台 admin 用户的初始化密码 password123，切记需要修改
-- 如果你的系统提示，docker-compose.yml 版本无法识别，把 version 3 改成 2 即可。
+
+#### docker-compose.yml 版本无法识别
+- 如果你的系统提示，docker-compose.yml 版本无法识别，可能是你的 docker-compose 太旧，把 version 3 改成 2 即可。
 
 
 
