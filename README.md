@@ -61,8 +61,11 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
 #### 如何修改数据库密码
 - 方法1：
   删除 database 文件夹，然后编辑 docker-compose.yml，注释掉下面2行，填写自己需要的密码
+  
   `# - ./config/postgres/postgresql.conf:/var/lib/postgresql/data/postgresql.conf`
+  
   `# - ./config/postgres/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf`
+  
   POSTGRES_PASSWORD:newpass123456
   运行后，把 django 的 settings.py 中的密码也一并修改，再把注释的内容恢复再运行一遍 docker-compose up -d 即可
 
