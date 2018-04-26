@@ -67,12 +67,16 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
   `# - ./config/postgres/pg_hba.conf:/var/lib/postgresql/data/pg_hba.conf`
   
   POSTGRES_PASSWORD:newpass123456
+  
   运行后，把 django 的 settings.py 中的密码也一并修改，再把注释的内容恢复再运行一遍 docker-compose up -d 即可
 
 - 方法2：
   进入 postgres 容器，然后手动修改密码
+  
   `alter user postgres with password 'newpass123456';`
+  
   再同步修改掉 docker-compose.yml 以及 django 的 settings.py 中的密码
+  
 
 #### django 后台密码
 - django 后台 admin 用户的初始化密码 password123，切记需要修改
