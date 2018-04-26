@@ -41,11 +41,17 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
 [软件版本]
 
 django:2.0.4
+
 centos:7.4(django 镜像中)
+
 python3.6.4(django 镜像中)
+
 nginx:1.13.12
+
 postgres:10.3
+
 docker-compose version 1.21.0
+
 docker Version:18.03.0-ce
 
 
