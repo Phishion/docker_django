@@ -2,6 +2,7 @@
 
 v0.1
 
+
 [产品说明]
 
 在任意安装了 docker 和 docker compose 的机器，只要在与
@@ -13,6 +14,7 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
 为了保证即开即用，数据库（无任何数据）和 django 程序文件已经初始化完成，用户可以根据自己的需求自行调整
 
 
+
 [实现目标]
 
 - 保证开发环境和生产环境高度统一
@@ -21,14 +23,19 @@ docker-compose.yml 同级的目录下运行 docker-compose up -d
 - 一键部署，帮助新手用户参考，度过困难期
 
 
+
 [使用说明]
 
 --config\       # 配置文件目录，可以实时修改，修改完成后，重启容器即可生效
+
 --database\     # 数据库文件夹，已经预先初始化一个叫 psndb 的数据库
---docker-compose.yml    # docker-compose 文件，用来描述容器的启动，容器和宿主机文件的挂载，以及容器相关配置
---source\       # django 代码的位置
+
+--docker-compose.yml    # docker-compose 文件，用来描述容器的启动，容器和宿主机文件的挂载，以及容器相关配置
+
+--source\       # django 代码的位置
 
 将 database 与 source 解压，然后在安装了 docker 和 docker compose 的机器输入 docker-compose up -d 即可。
+
 
 
 [软件版本]
@@ -40,6 +47,8 @@ nginx:1.13.12
 postgres:10.3
 docker-compose version 1.21.0
 docker Version:18.03.0-ce
+
+
 
 [重要提示]
 
